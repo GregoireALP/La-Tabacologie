@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@500&family=Notable&display=swap');
+:root {
+  --color1: #0B2126;
+  --color2: #F2E8E4;
+  --color3: #D93B18;
+  --color4: #8C260F;
+  --color5: #59180A;
+
+  --border-radius: 30px
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard-container {
+  border-radius: var(--border-radius);
+  background-color: var(--color2);
+
+  padding: 1rem;
+}

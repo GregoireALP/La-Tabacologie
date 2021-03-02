@@ -1,0 +1,28 @@
+.sidebar {
+    background-color: var(--color4);
+
+    display: grid;
+    grid-template-rows: 12% 88%;
+
+    border-radius: var(--border-radius);
+    border: solid 5px var(--color5);
+}
+
+.sidebar-body {
+    text-align: center;
+}
+
+.sidebar-title {
+    text-align: center;
+    font-family: 'Baloo Chettan 2', cursive;
+    font-size: 50px;
+    position: relative;
+    bottom: 25px;
+    letter-spacing: 3px;
+}
+
+.nav-element {
+    font-family: 'Baloo Chettan 2', cursive;
+    font-size: 25px;
+    margin-bottom: 60px;    
+}

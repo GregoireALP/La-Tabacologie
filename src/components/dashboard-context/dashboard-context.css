@@ -1,0 +1,47 @@
+.dashboard-context {
+    margin: 0;
+
+    display: grid;
+    grid-template-rows: 8vh 92vh;
+
+    background-color: var(--color1);
+    color: var(--color2);
+}
+
+.dashboard-context-body {
+    margin-left: auto;
+    margin-right: auto;
+    width: 98%;
+    
+    display: grid;
+    grid-template-columns: 15% 84%;
+    grid-gap: 1%;
+
+    padding-bottom: 1%;
+}
+
+.dashboard-context-header {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.svg {
+    float: right;
+
+    position: relative;
+    top: 15px;
+    right: 100px;
+}
+
+.title {
+    float: left;
+
+    font-size: xx-large;
+    font-family: 'Baloo Chettan 2', cursive;
+
+    letter-spacing: 1px;
+
+    position: relative;
+    bottom: 15px;
+    left: 15px;
+}
