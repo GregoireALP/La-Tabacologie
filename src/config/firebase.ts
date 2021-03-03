@@ -13,6 +13,7 @@ firebase.initializeApp({
 
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()
+export const googleProvider = new firebase.auth.GoogleAuthProvider()
 
 /**
  * Paths
