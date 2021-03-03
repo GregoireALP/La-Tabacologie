@@ -18,4 +18,4 @@ export const firestore = firebase.firestore()
  * Paths
  */
 export const USER_TABACO_DATA_PATH = "user_tabaco_data"
-export const TABACO_DATA_STATS = "tabaco_data_stats"
+export const TABACO_DATA_STATS_PATH = "tabaco_data_stats"

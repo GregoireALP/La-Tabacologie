@@ -3,28 +3,31 @@ import DashboardChart from '../components/charts/DashboardChart'
 import "./styles/dashboard-main.css"
 
 import {firestore, USER_TABACO_DATA_PATH} from "../config/firebase"
+import FirebaseQuerry from '../utils/FirebaseQuerry'
 
 interface IProps {
 
 }
 
-type FirebaseData = {
+type FirebaseDataFetchModel = {
     label: string[],
     dataCharts: number[]
 }
 
 interface IState {
     isLoading: boolean
-    dataFromFirebase: FirebaseData
+    firebaseDataFetch: FirebaseDataFetchModel
 }
 
 export default class DashboardMain extends React.Component<IProps, IState> {
+
+    private FirebaseQuerry = new FirebaseQuerry()
 
     constructor(props: IProps) {
         super(props)
         this.state = {
             isLoading: true,
-            dataFromFirebase: {
+            firebaseDataFetch: {
                 label: ["none"],
                 dataCharts: [0]
             }
@@ -35,34 +38,21 @@ export default class DashboardMain extends React.Component<IProps, IState> {
         const self = this
 
         /**
-         * All instruction in the callback function
+         * Clean State before fill it
          */
-        this.prepareMainCharts(function() {
+        this.state.firebaseDataFetch.dataCharts = []
+        this.state.firebaseDataFetch.label = []
+
+        FirebaseQuerry.fetchDataFromFirebase(USER_TABACO_DATA_PATH, function(doc: any) {
+
+            self.state.firebaseDataFetch.dataCharts.push(parseInt(doc.data().consumption_day))
+            self.state.firebaseDataFetch.label.push(doc.data().dateDayName)
+        }, function() {
             self.setState({isLoading: false})
         })
+
     }
 
-    private async prepareMainCharts(next: Function) {
-        const self = this
-
-        let dataArray: number[] = []
-        let labelArray: string[] = []
-
-        firestore.collection(USER_TABACO_DATA_PATH).get()
-        .then(function(data) {
-            data.docs.map(function(doc) {
-                dataArray.push(parseInt(doc.data().consumption_day))
-                labelArray.push(doc.data().dateDayName)
-            })
-
-            self.setState({dataFromFirebase: {
-                label: labelArray,
-                dataCharts: dataArray
-            }})  
-
-            next()
-        })
-    }
 
     render() {
 
@@ -75,8 +65,8 @@ export default class DashboardMain extends React.Component<IProps, IState> {
                 <DashboardChart 
                 title="Ta mere" 
                 labelName="Cigarettes"
-                label={this.state.dataFromFirebase.label}
-                data={this.state.dataFromFirebase.dataCharts} 
+                label={this.state.firebaseDataFetch.label}
+                data={this.state.firebaseDataFetch.dataCharts} 
                 bgColor="#d93b189f"
                 height={200} 
                 width={700}
