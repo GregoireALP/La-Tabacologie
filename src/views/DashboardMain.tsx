@@ -63,13 +63,13 @@ export default class DashboardMain extends React.Component<IProps, IState> {
         return(
             <div className="dashboard-container">
                 <DashboardChart 
-                title="Ta mere" 
-                labelName="Cigarettes"
+                title="Cigarettes" 
+                labelName="Salope"
                 label={this.state.firebaseDataFetch.label}
                 data={this.state.firebaseDataFetch.dataCharts} 
-                bgColor="#d93b189f"
-                height={200} 
-                width={700}
+                bgColor="#c203fc"
+                height={300} 
+                width={500}
                 />
             </div>
         )

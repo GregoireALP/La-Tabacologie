@@ -20,3 +20,4 @@ export const googleProvider = new firebase.auth.GoogleAuthProvider()
  */
 export const USER_TABACO_DATA_PATH = "user_tabaco_data"
 export const TABACO_DATA_STATS_PATH = "tabaco_data_stats"
+export const USER_DATA_PATH = "user_data"
